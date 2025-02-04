@@ -1,6 +1,7 @@
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { betterAuth } from "better-auth";
 import { prisma } from "./db";
+import { organization } from "better-auth/plugins";
 
 export const auth = betterAuth({
   emailAndPassword: {
@@ -15,4 +16,5 @@ export const auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     },
   },
+  plugins: [organization()],
 });
